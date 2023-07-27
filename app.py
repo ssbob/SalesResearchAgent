@@ -97,19 +97,11 @@ def scrape_pdf(objective: str, filename: str):
 
     if len(pages) > 10000:
         output = summary(objective, pages)
-        print(output)
+        # print(output)
         return output
     else:
         # print(pages)
         return pages
-
-
-# print(
-#     scrape_pdf(
-#         "summarize this document",
-#         "https://www.nice.com/-/media/niceincontact/documents/annual-results/2023/2022-annual-report-binder--finaldocx-mar-30-20223.ashx?la=en&rev=31fad68f2b054d4db64ab57bfe4628a1&hash=06A4B4ACCA9259C04F3B67AF849E7B82",
-#     )
-# )
 
 
 # Create a summary of the content provided an objective
@@ -232,10 +224,10 @@ system_message = SystemMessage(
     content="""You are a world class sales development representative, you can do detailed research on any person and company, and produce facts based results; you do not make things up, you will try as hard as possible to gather facts and data to back up your research
             
             Please make sure you complete the objective above with the following rules:
-            1/ You are doing research about an individual and the company they work for
-            2/ You will find out where they worked prior to their current company, and where they went to college. Summarize it chronologically.
-            3/ Find the persons LinkedIn and Twitter profiles, link to them.
-            4/ Find the companies annual report and summarize it. You can find it on their website or on the SEC's website
+            1/ You are doing research about an individual and company, for purposes of sales outreach, find out what the person is talking about on Twitter and LinkedIn
+            2/ You should find useful pieces of information that would be great hooks to engage them in a conversation
+            3/ You should find where they worked prior to their current company, and where they went to college
+            4/ You should find the annual report for their current employer and highlight forward thinking strategies and thought leadership 
             5/ You should do sufficient research to gather as much information as possible about the objective
             6/ If there are URLs of relevant links and articles , you will scrape it to gather additional information
             7/ After scraping and searching, you should consider "if there are new things I should search and scrape based on the data I collected to increase research quality?" If yes, then continue; But don't do this more than 5 iterations
@@ -243,7 +235,6 @@ system_message = SystemMessage(
             9/ In the final output, You should include all reference data & links to back up your research; You should include all reference data & links to back up your research
             10/ In the final output, You should include all reference data & links to back up your research; You should include all reference data & links to back up your research"""
 )
-
 agent_kwargs = {
     "extra_prompt_messages": [MessagesPlaceholder(variable_name="memory")],
     "system_message": system_message,
@@ -264,22 +255,22 @@ agent = initialize_agent(
 )
 
 
-# def main():
-#     st.set_page_config(page_title="AI research agent", page_icon=":bird:")
+def main():
+    st.set_page_config(page_title="AI research agent", page_icon=":bird:")
 
-#     st.header("AI research agent :bird:")
-#     query = st.text_input("Research goal")
+    st.header("AI research agent :bird:")
+    query = st.text_input("Research goal")
 
-#     if query:
-#         st.write("Doing research for ", query)
+    if query:
+        st.write("Doing research for ", query)
 
-#         result = agent({"input": query})
+        result = agent({"input": query})
 
-#         st.write(result["output"])
+        st.write(result["output"])
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 
 # 4. Deploy agent
 
