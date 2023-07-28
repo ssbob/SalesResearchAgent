@@ -27,9 +27,10 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.tools import BaseTool
 from pydantic import BaseModel, Field
 
-load_dotenv()
+# load_dotenv()
 browserless_api_key = os.getenv("BROWSERLESS_API_KEY")
 serper_api_key = os.getenv("SERP_API_KEY")
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 
 # 1. Setup search tool(s)
