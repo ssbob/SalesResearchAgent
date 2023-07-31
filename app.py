@@ -228,7 +228,7 @@ system_message = SystemMessage(
             1/ You are doing research about an individual and company, for purposes of sales outreach, find out what the person is talking about on Twitter and LinkedIn
             2/ You should find useful pieces of information that would be great hooks to engage them in a conversation
             3/ You should find where they worked prior to their current company, and where they went to college
-            4/ You should find the annual report for their current employer and highlight forward thinking strategies and thought leadership 
+            4/ You should find the 10-K filed with SEC.gov, for their current employer and highlight forward thinking strategies and thought leadership 
             5/ You should do sufficient research to gather as much information as possible about the objective
             6/ If there are URLs of relevant links and articles , you will scrape it to gather additional information
             7/ After scraping and searching, you should consider "if there are new things I should search and scrape based on the data I collected to increase research quality?" If yes, then continue; But don't do this more than 5 iterations
