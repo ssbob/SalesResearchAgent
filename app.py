@@ -1,9 +1,11 @@
-# Original credit for this idea comes from me the author, however,
-# a similar use case was created by https://github.com/JayZeeDesign/researcher-gpt/tree/main,
-# based on a YouTube video https://youtu.be/ogQUlS7CkYA
-#
-# This implementation of this project is heavily inspired by the above, and tweaked
-# for this use case
+# Original credit for this idea comes from:
+# Author: https://github.com/JayZeeDesign
+# YouTube: https://youtu.be/ogQUlS7CkYA
+# Source code: https://github.com/JayZeeDesign/researcher-gpt
+
+
+# This implementation of this project is heavily inspired by the above
+# and tweaked for this use case
 
 
 import json
@@ -27,6 +29,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.tools import BaseTool
 from pydantic import BaseModel, Field
 
+# Load up API keys
 # load_dotenv()
 browserless_api_key = os.getenv("BROWSERLESS_API_KEY")
 serper_api_key = os.getenv("SERP_API_KEY")
@@ -48,7 +51,7 @@ def search(query):
     return response.text
 
 
-# Test search tool
+# Test search tools
 # search("what is the weather in London today?")
 
 
@@ -257,13 +260,13 @@ agent = initialize_agent(
 
 
 def main():
-    st.set_page_config(page_title="AI research agent", page_icon=":bird:")
+    st.set_page_config(page_title="AI Research Agent", page_icon=":bird:")
 
-    st.header("AI research agent :bird:")
-    query = st.text_input("Research goal")
+    st.header("AI Research Agent")
+    query = st.text_input("Research Goal", placeholder="Enter a name and a Company")
 
     if query:
-        st.write("Doing research for ", query)
+        st.write("Doing research: ", query)
 
         result = agent({"input": query})
 
